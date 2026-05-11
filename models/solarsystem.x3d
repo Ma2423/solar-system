@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "https://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D version="3.3" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance">
+  <Scene>
+    <Background skyColor="0 0 0.04"/>
+    <!-- Sun -->
+    <Transform translation="0 0 0">
+      <Shape>
+        <Appearance><Material emissiveColor="1 0.7 0"/><ImageTexture url="../images/sun.jpg"/></Appearance>
+        <Sphere radius="2"/>
+      </Shape>
+    </Transform>
+    <!-- Mercury -->
+    <Transform translation="4 0 0">
+      <Shape>
+        <Appearance><Material diffuseColor="0.7 0.7 0.7"/><ImageTexture url="../images/mercury.jpg"/></Appearance>
+        <Sphere radius="0.28"/>
+      </Shape>
+    </Transform>
+    <!-- Venus -->
+    <Transform translation="7 0 0">
+      <Shape>
+        <Appearance><Material diffuseColor="0.9 0.75 0.5"/><ImageTexture url="../images/venus.jpg"/></Appearance>
+        <Sphere radius="0.55"/>
+      </Shape>
+    </Transform>
+    <!-- Earth -->
+    <Transform translation="10 0 0">
+      <Shape>
+        <Appearance><Material diffuseColor="0.2 0.5 0.9"/><ImageTexture url="../images/earth.jpg"/></Appearance>
+        <Sphere radius="0.6"/>
+      </Shape>
+    </Transform>
+    <!-- Mars -->
+    <Transform translation="13 0 0">
+      <Shape>
+        <Appearance><Material diffuseColor="0.8 0.3 0.1"/><ImageTexture url="../images/mars.jpg"/></Appearance>
+        <Sphere radius="0.4"/>
+      </Shape>
+    </Transform>
+    <!-- Jupiter -->
+    <Transform translation="17 0 0">
+      <Shape>
+        <Appearance><Material diffuseColor="0.85 0.65 0.45"/><ImageTexture url="../images/jupiter.jpg"/></Appearance>
+        <Sphere radius="1.2"/>
+      </Shape>
+    </Transform>
+    <!-- Saturn -->
+    <Transform translation="21.5 0 0">
+      <Shape>
+        <Appearance><Material diffuseColor="0.9 0.8 0.55"/><ImageTexture url="../images/saturn.jpg"/></Appearance>
+        <Sphere radius="1.0"/>
+      </Shape>
+    </Transform>
+    <!-- Uranus -->
+    <Transform translation="25.5 0 0">
+      <Shape>
+        <Appearance><Material diffuseColor="0.5 0.85 0.9"/><ImageTexture url="../images/uranus.jpg"/></Appearance>
+        <Sphere radius="0.75"/>
+      </Shape>
+    </Transform>
+    <!-- Neptune -->
+    <Transform translation="29 0 0">
+      <Shape>
+        <Appearance><Material diffuseColor="0.2 0.35 0.9"/><ImageTexture url="../images/neptune.jpg"/></Appearance>
+        <Sphere radius="0.7"/>
+      </Shape>
+    </Transform>
+  </Scene>
+</X3D>

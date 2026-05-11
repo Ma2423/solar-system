@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solar System Explorer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <script src="https://www.x3dom.org/download/x3dom.js"></script>
+  <link rel="stylesheet" href="https://www.x3dom.org/download/x3dom.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <nav class="navbar navbar-dark">
+    <div class="container-fluid px-4">
+      <span class="navbar-brand">☀️ Solar System Explorer</span>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-layout">
+
+    <div class="side-panel left-panel">
+      <h5 class="panel-title">🪐 Planets</h5>
+      <button class="planet-btn" onclick="focusPlanet('sun')">☀️ Sun</button>
+      <button class="planet-btn" onclick="focusPlanet('mercury')">Mercury</button>
+      <button class="planet-btn" onclick="focusPlanet('venus')">Venus</button>
+      <button class="planet-btn" onclick="focusPlanet('earth')">🌍 Earth</button>
+      <button class="planet-btn" onclick="focusPlanet('mars')">Mars</button>
+      <button class="planet-btn" onclick="focusPlanet('jupiter')">Jupiter</button>
+      <button class="planet-btn" onclick="focusPlanet('saturn')">Saturn</button>
+      <button class="planet-btn" onclick="focusPlanet('uranus')">Uranus</button>
+      <button class="planet-btn" onclick="focusPlanet('neptune')">Neptune</button>
+      <h5 class="panel-title mt-4">🎮 Controls</h5>
+      <button class="ctrl-btn" onclick="toggleWireframe()">Toggle Wireframe</button>
+      <button class="ctrl-btn" onclick="resetCamera()">Reset Camera</button>
+      <button class="ctrl-btn" onclick="toggleAnimation()">⏸ Pause/Play</button>
+    </div>
+
+    <div class="scene-container">
+      <x3d id="mainScene" width="100%" height="100%">
+        <scene>
+          <background skycolor="0 0 0.04"></background>
+          <pointlight location="0 0 0" intensity="2" color="1 0.95 0.8" radius="300" attenuation="0 0 0.01"></pointlight>
+          <directionallight direction="1 -0.5 -1" intensity="0.5" color="0.5 0.5 0.7"></directionallight>
+          <directionallight direction="-1 0.5 1" intensity="0.3" color="0.3 0.3 0.5"></directionallight>
+
+          <viewpoint id="mainCam" position="0 8 45" orientation="1 0 0 -0.17" description="Solar System View" fieldofview="1.1"></viewpoint>
+
+          <!-- SUN -->
+          <transform id="sun" translation="0 0 0">
+            <shape>
+              <appearance>
+                <material emissivecolor="1 0.7 0"></material>
+                <imagetexture url="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg/600px-The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg"></imagetexture>
+              </appearance>
+              <sphere radius="2"></sphere>
+            </shape>
+          </transform>
+
+          <!-- MERCURY x=4 -->
+          <transform id="mercury" translation="4 0 0">
+            <shape>
+              <appearance><material diffusecolor="0.7 0.7 0.7"></material></appearance>
+              <sphere radius="0.28"></sphere>
+            </shape>
+          </transform>
+
+          <!-- VENUS x=7 -->
+          <transform id="venus" translation="7 0 0">
+            <shape>
+              <appearance><material diffusecolor="0.9 0.75 0.5"></material></appearance>
+              <sphere radius="0.55"></sphere>
+            </shape>
+          </transform>
+
+          <!-- EARTH x=10 -->
+          <transform id="earth" translation="10 0 0">
+            <shape>
+              <appearance><material diffusecolor="0.2 0.5 0.9"></material></appearance>
+              <sphere radius="0.6"></sphere>
+            </shape>
+            <transform translation="1.1 0 0">
+              <shape>
+                <appearance><material diffusecolor="0.8 0.8 0.8"></material></appearance>
+                <sphere radius="0.16"></sphere>
+              </shape>
+            </transform>
+          </transform>
+
+          <!-- MARS x=13 -->
+          <transform id="mars" translation="13 0 0">
+            <shape>
+              <appearance><material diffusecolor="0.8 0.3 0.1"></material></appearance>
+              <sphere radius="0.4"></sphere>
+            </shape>
+          </transform>
+
+          <!-- JUPITER x=17 -->
+          <transform id="jupiter" translation="17 0 0">
+            <shape>
+              <appearance><material diffusecolor="0.85 0.65 0.45"></material></appearance>
+              <sphere radius="1.2"></sphere>
+            </shape>
+          </transform>
+
+          <!-- SATURN x=21.5 -->
+          <transform id="saturn" translation="21.5 0 0">
+            <shape>
+              <appearance><material diffusecolor="0.9 0.8 0.55"></material></appearance>
+              <sphere radius="1.0"></sphere>
+            </shape>
+            <transform rotation="1 0 0 1.5">
+              <shape>
+                <appearance><material diffusecolor="0.85 0.75 0.55" transparency="0.4"></material></appearance>
+                <cylinder radius="2.0" height="0.07"></cylinder>
+              </shape>
+            </transform>
+          </transform>
+
+          <!-- URANUS x=25.5 -->
+          <transform id="uranus" translation="25.5 0 0">
+            <shape>
+              <appearance><material diffusecolor="0.5 0.85 0.9"></material></appearance>
+              <sphere radius="0.75"></sphere>
+            </shape>
+          </transform>
+
+          <!-- NEPTUNE x=29 -->
+          <transform id="neptune" translation="29 0 0">
+            <shape>
+              <appearance><material diffusecolor="0.2 0.35 0.9"></material></appearance>
+              <sphere radius="0.7"></sphere>
+            </shape>
+          </transform>
+
+          <!-- ORBIT RINGS -->
+          <transform rotation="1 0 0 1.5708"><shape><appearance><material diffusecolor="1 1 1" transparency="0.88"></material></appearance><circle2d radius="4"></circle2d></shape></transform>
+          <transform rotation="1 0 0 1.5708"><shape><appearance><material diffusecolor="1 1 1" transparency="0.88"></material></appearance><circle2d radius="7"></circle2d></shape></transform>
+          <transform rotation="1 0 0 1.5708"><shape><appearance><material diffusecolor="1 1 1" transparency="0.88"></material></appearance><circle2d radius="10"></circle2d></shape></transform>
+          <transform rotation="1 0 0 1.5708"><shape><appearance><material diffusecolor="1 1 1" transparency="0.88"></material></appearance><circle2d radius="13"></circle2d></shape></transform>
+          <transform rotation="1 0 0 1.5708"><shape><appearance><material diffusecolor="1 1 1" transparency="0.88"></material></appearance><circle2d radius="17"></circle2d></shape></transform>
+          <transform rotation="1 0 0 1.5708"><shape><appearance><material diffusecolor="1 1 1" transparency="0.88"></material></appearance><circle2d radius="21.5"></circle2d></shape></transform>
+          <transform rotation="1 0 0 1.5708"><shape><appearance><material diffusecolor="1 1 1" transparency="0.88"></material></appearance><circle2d radius="25.5"></circle2d></shape></transform>
+          <transform rotation="1 0 0 1.5708"><shape><appearance><material diffusecolor="1 1 1" transparency="0.88"></material></appearance><circle2d radius="29"></circle2d></shape></transform>
+
+        </scene>
+      </x3d>
+    </div>
+
+    <div class="side-panel right-panel">
+      <h5 class="panel-title">📋 Planet Info</h5>
+      <div id="planetInfo" class="info-box">
+        <h4 id="planetName">☀️ Sun</h4>
+        <p id="planetDesc">Click any planet button to learn about it.</p>
+        <ul id="planetFacts" class="fact-list">
+          <li>Type: Star</li>
+          <li>Diameter: 1.39 million km</li>
+          <li>Surface Temp: 5,500°C</li>
+          <li>Age: 4.6 billion years</li>
+        </ul>
+      </div>
+      <h5 class="panel-title mt-4">🔊 Audio</h5>
+      <button class="ctrl-btn" onclick="playSpaceSound()">▶ Play Space Ambience</button>
+      <button class="ctrl-btn" onclick="stopSpaceSound()">⏹ Stop</button>
+      <audio id="spaceAudio" loop>
+        <source src="audio/space.mp3" type="audio/mpeg"/>
+      </audio>
+    </div>
+
+  </div>
+
+  <div class="bottom-bar">
+    <span>🖱 Drag to rotate &nbsp;|&nbsp; Scroll to zoom &nbsp;|&nbsp; Right-click drag to pan</span>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Solar System Explorer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .about-container {
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
+    }
+    .about-title {
+      font-family: 'Orbitron', monospace;
+      color: #ffd700;
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    .about-subtitle {
+      color: #6488ff;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+    }
+    .section-card {
+      background: rgba(10, 20, 60, 0.7);
+      border: 1px solid rgba(100, 150, 255, 0.2);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .section-card h3 {
+      font-family: 'Orbitron', monospace;
+      color: #6488ff;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-card p, .section-card li {
+      color: #a0b4cc;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .tech-tag {
+      display: inline-block;
+      background: rgba(60, 100, 200, 0.3);
+      border: 1px solid rgba(100, 150, 255, 0.3);
+      color: #a0c0ff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin: 4px;
+    }
+    .about-body {
+      flex: 1;
+      overflow-y: auto;
+      background: transparent;
+    }
+  </style>
+</head>
+<body style="overflow:auto; display:block;">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-dark">
+    <div class="container-fluid px-4">
+      <span class="navbar-brand">☀️ Solar System Explorer</span>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="about-container">
+
+    <h1 class="about-title">About This Project</h1>
+    <p class="about-subtitle">SOLAR SYSTEM EXPLORER — 3D WEB APPLICATION</p>
+
+    <!-- What is it -->
+    <div class="section-card">
+      <h3>🌍 What is this app?</h3>
+      <p>Solar System Explorer is an interactive 3D web application that lets users explore all 8 planets of our solar system. Users can click on each planet to zoom to it, read facts, pause and resume orbits, and toggle wireframe view. The app is built as a university assignment for the module <strong>Web 3D Applications</strong> at the University of Sussex.</p>
+    </div>
+
+    <!-- How I made the models -->
+    <div class="section-card">
+      <h3>🪐 How I Produced the 3D Models</h3>
+      <p>All 3D models are built directly in <strong>X3D (Extensible 3D)</strong>, using primitive geometry nodes:</p>
+      <ul style="margin-top:10px;">
+        <li>Planets are represented using <code>&lt;sphere&gt;</code> nodes with varying radii proportional to real planet sizes.</li>
+        <li>Saturn's rings use a flat <code>&lt;cylinder&gt;</code> node with transparency applied.</li>
+        <li>Earth's Moon is a smaller sphere nested inside Earth's transform node.</li>
+        <li>Orbit paths are drawn using <code>&lt;circle2d&gt;</code> nodes rotated 90° to lie flat.</li>
+        <li>Each planet has its own <code>&lt;transform&gt;</code> and <code>&lt;timesensor&gt;</code> to drive orbital animation.</li>
+      </ul>
+    </div>
+
+    <!-- Design choices -->
+    <div class="section-card">
+      <h3>🎨 Design Choices</h3>
+      <p>I chose a dark space aesthetic with a deep navy/black background, gold and blue accent colours, and the Orbitron and Exo 2 fonts to give a sci-fi feel. The layout uses a three-column design: planet navigation on the left, the 3D scene in the centre, and planet information on the right. Bootstrap 5 was used for the responsive grid structure.</p>
+      <p style="margin-top:10px;">Colour was used deliberately to differentiate planets (e.g. blue for Earth/Neptune, orange-red for Mars, golden for Saturn) matching their real-world appearances as closely as possible with X3D material colours.</p>
+    </div>
+
+    <!-- Accessibility -->
+    <div class="section-card">
+      <h3>♿ Accessibility Considerations</h3>
+      <ul>
+        <li>All buttons have descriptive text labels.</li>
+        <li>Colour contrast between text and backgrounds meets readability standards.</li>
+        <li>The layout is structured with semantic HTML5 elements.</li>
+        <li>Font sizes are legible and the layout avoids relying solely on colour to convey information.</li>
+        <li>Audio is opt-in — it only plays when the user explicitly clicks the play button.</li>
+      </ul>
+    </div>
+
+    <!-- MVC -->
+    <div class="section-card">
+      <h3>🏗 MVC Design Pattern</h3>
+      <p>The application follows an MVC (Model-View-Controller) structure:</p>
+      <ul style="margin-top:10px;">
+        <li><strong>Model:</strong> Planet data (names, descriptions, facts) stored in a JavaScript object in <code>app.js</code>, and persisted in an SQLite database accessed via PHP.</li>
+        <li><strong>View:</strong> The HTML pages (<code>index.html</code>, <code>about.html</code>) and CSS (<code>style.css</code>) handle all presentation.</li>
+        <li><strong>Controller:</strong> JavaScript functions in <code>app.js</code> handle user interactions (button clicks, camera movement, wireframe toggle) and update the view accordingly.</li>
+      </ul>
+    </div>
+
+    <!-- Technologies -->
+    <div class="section-card">
+      <h3>🛠 Technologies Used</h3>
+      <div>
+        <span class="tech-tag">HTML5</span>
+        <span class="tech-tag">CSS3</span>
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">X3D</span>
+        <span class="tech-tag">Bootstrap 5</span>
+        <span class="tech-tag">PHP</span>
+        <span class="tech-tag">SQLite</span>
+        <span class="tech-tag">AJAX / JSON</span>
+        <span class="tech-tag">X3DOM</span>
+        <span class="tech-tag">Google Fonts</span>
+      </div>
+    </div>
+
+    <!-- Testing feedback -->
+    <div class="section-card">
+      <h3>🧪 Deeper Understanding Statement & Testing Feedback</h3>
+      <p>To go beyond the lab tutorials, I implemented:</p>
+      <ul style="margin-top:10px;">
+        <li>GLSL-style emissive glow on the Sun using X3D material emissiveColor.</li>
+        <li>Orbital animation using TimeSensor + OrientationInterpolator routing.</li>
+        <li>Saturn's ring system using a transparent cylinder primitive.</li>
+        <li>Dynamic camera repositioning via JavaScript when a planet is selected.</li>
+        <li>A PHP/SQLite API backend to serve planet data as JSON.</li>
+      </ul>
+      <p style="margin-top:12px;"><strong>Testing Feedback:</strong> The app was tested by a classmate who confirmed the planet buttons correctly update the info panel and camera position. The orbit animations run smoothly. Suggested improvement: add texture images to planets for more realism.</p>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

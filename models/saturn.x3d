@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "https://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D version="3.3" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance">
+  <Scene>
+    <!-- Saturn planet -->
+    <Shape>
+      <Appearance>
+        <Material diffuseColor="0.9 0.8 0.55"/>
+        <ImageTexture url="images/saturn.jpg"/>
+      </Appearance>
+      <Sphere radius="1.0"/>
+    </Shape>
+    <!-- Saturn ring -->
+    <Transform rotation="1 0 0 1.5">
+      <Shape>
+        <Appearance>
+          <Material diffuseColor="0.85 0.75 0.55" transparency="0.4"/>
+        </Appearance>
+        <Cylinder radius="2.0" height="0.07"/>
+      </Shape>
+    </Transform>
+  </Scene>
+</X3D>
